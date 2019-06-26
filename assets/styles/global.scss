@@ -1,0 +1,24 @@
+.form-inputs-container {
+  margin: 5px 0;
+  display: flex;
+  justify-content: space-between;
+
+  .form-input {
+    width: 80%;
+    margin: 0 15px;
+    height: 30px;
+  }
+  .textarea {
+    border-color: #e6e6e6;
+    height: 100px;
+    resize: none;
+  }
+}
+.btn {
+    height: 30px;
+    line-height: 0;
+    margin-right: 10px;
+    p {
+        cursor: pointer;
+    }
+}

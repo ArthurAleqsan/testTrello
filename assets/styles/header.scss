@@ -1,0 +1,24 @@
+.main-header {
+    padding: 2%;
+    box-shadow: 0 3px 0 rgba(0,0,0,.075);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .header-list-container {
+        display: flex;
+    }
+    .list-item {
+        list-style: none;
+        color: #4c5264;
+        padding: 20px 0 0;
+        margin-left: 10px;
+        cursor: pointer;
+        
+    }
+    .list-item:hover {
+        text-decoration: underline;
+    }
+    .admin-item{
+        font-size: 18px;
+    }
+}
