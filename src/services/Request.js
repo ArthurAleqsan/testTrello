@@ -47,6 +47,7 @@ export default class ServerConnector {
     static fetcher(req, path, errHandler) {
         const headersObj = Object.assign({
             'content-type': 'application/json',
+            'mimeType': "multipart/form-data",
             // 'Cache-Control': 'no-cache',
             // "authorization": `Bearer ${localStorage.getItem('token')}`,
         }, req.headers);

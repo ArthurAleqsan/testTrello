@@ -7,7 +7,7 @@ import 'antd/lib/message/style/index.css';
 import { Input, Button } from './componentsLib/simpleUiComponents';
 
 
-const BasicPopup = ({ close, from, adminEmail, pass }) => {
+const BasicPopup = ({ close, from, adminEmail, pass, create_task }) => {
     const [inputFields, setFields] = useState({
         email: '',
         username: '',
@@ -25,6 +25,9 @@ const BasicPopup = ({ close, from, adminEmail, pass }) => {
             message.error('Email is not valid.');
             return;
         }
+        // console.log({email, username, text});
+        create_task({email, username, text});
+
     };
     const signUp = () => {
         const { email, password } = inputFields;

@@ -2,16 +2,18 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getTasks } from './../store/global/global.actins';
+import { getTasks } from './../store/tasks/tasks.actions';
+import LeftColumn from './main/left-column';
+import RightColumn from './main/right-column';
 
 const Main = ({ tasks, getTasks }) => {
     useEffect(()=> {
-        getTasks({page : 5});
+        getTasks({});
     },[]);
-    console.log(tasks)
     return (
-        <div>
-
+        <div className = 'main-body'>
+            <LeftColumn />
+            <RightColumn tasks = {tasks}/>
         </div>
     )
 }
@@ -20,7 +22,7 @@ Main.propTypes = {
     getTasks: PropTypes.func.isRequired,
 };
 const mapStateToProps = state => {
-    const { tasks } = state.global;
+    const { tasks } = state.tasks;
     return {
         tasks,
     }

@@ -9,9 +9,16 @@ class MainService extends Request {
         const options = {
             method: 'GET',
         };
-        console.log(query);
 
-        return this.send({ path: `/?developer=Name&${Request.makeQuery(query)}`, options }).then((res) => (res))
+        return this.send({ path: `/?developer=Arthur&${Request.makeQuery(query)}`, options }).then((res) => (res))
+    }
+    createTask(data) {
+        const options = {
+            method: 'POST',
+            body: JSON.stringify(data),
+        };
+        console.log(555);
+        return this.send({path: '/create', options}).then(r => console.log(r))
     }
 }
 

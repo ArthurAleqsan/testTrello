@@ -22,3 +22,36 @@
         cursor: pointer;
     }
 }
+.main-body {
+  display: flex;
+  .column {
+    padding: 2%;
+    box-shadow: 0 0 3px rgba(0,0,0,.075);
+    height: 70vh;
+  }
+  .left-column {
+    flex: 0.15;
+  }
+  .right-column {
+    flex: 0.85;
+  }
+}
+.task-box {
+  border: 1px solid #e6e6e6;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px 0;
+  .task-box-header {
+    display: flex;
+    align-items: center;                                                                                
+  }
+  .task-box-footer {
+    p {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}
+.task-box-is-done {
+  border: 1px solid green;
+}
