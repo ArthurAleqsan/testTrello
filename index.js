@@ -5,6 +5,15 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const BASE_URL = 'https://uxcandy.com/~shapoval/';
+
+// app.use('/test-task-backend', proxy({target: BASE_URL, changeOrigin: true, }));
+
+app.use('/test-task-backend', (req, res, next) => {
+    next();
+}, proxy({target: BASE_URL, changeOrigin: true},onError));
+
+
 const page = require('./page/');
 
 
@@ -16,8 +25,6 @@ app.use('/assets', express.static('assets'));
 app.use(async (req, res, next) => {
     res.sendFile(path.join(__dirname + '/public/index.html'));
 });
-
-//app.use(express.static('public'));
 
 
 app.listen(PORT, () => {

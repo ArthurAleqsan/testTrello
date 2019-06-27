@@ -18,6 +18,7 @@ const skin = process.env.skin || defaultSkinName;
 const env = 'production';
 const outputPath = path.resolve(__dirname, env === 'production' ? 'public' : 'publicDev');
 
+const BASE_URL = 'http://localhost:3000';
 
 
 const config = {
@@ -67,12 +68,12 @@ const config = {
     plugins: [
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(env),
-            'process.env.API_USER_URL':JSON.stringify(API_USER_URL),
+            'process.env.API_USER_URL':JSON.stringify(BASE_URL),
         }),
         new HtmlWebpackPlugin({
             template: './index.html',
             googleAnalitic: env === 'production' ? `<script></script>` : '',
-            title: 'GodsSides'
+            title: 'test'
         }),
         new MiniCssExtractPlugin({
             filename: "[name]-[hash].css",
@@ -114,6 +115,12 @@ const config = {
         host: '0.0.0.0',
         disableHostCheck: true,
         historyApiFallback: true,
+        proxy: {
+            '/test-task-backend': {
+                target: BASE_URL,
+                pathRewrite: {'^/test-task-backend' : '/'}
+            },
+        }
       
     },
 
