@@ -1,5 +1,4 @@
 import Request from './Request';
-import { encode } from 'encode-3986'
 
 
 class MainService extends Request {
@@ -21,8 +20,6 @@ class MainService extends Request {
         formData.append('username', data.username);
         formData.append('email', data.email);
         formData.append('text', data.text);
-        const aaa = encode(formData);
-        console.log(aaa)
         const options = {
             method: 'POST',
             body: formData,
