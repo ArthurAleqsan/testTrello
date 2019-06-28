@@ -7,18 +7,23 @@
     .header-list-container {
         display: flex;
     }
-    .list-item {
-        list-style: none;
-        color: #4c5264;
-        padding: 20px 0 0;
-        margin-left: 10px;
-        cursor: pointer;
-        
-    }
-    .list-item:hover {
-        text-decoration: underline;
-    }
+
     .admin-item{
         font-size: 18px;
     }
+}
+.list-item {
+    list-style: none;
+    color: #4c5264;
+    padding: 20px 0 0;
+    margin-left: 10px;
+    cursor: pointer;
+    
+}
+.active-item {
+    text-decoration: underline;
+    font-weight: bold;
+}
+.list-item:hover {
+    text-decoration: underline;
 }

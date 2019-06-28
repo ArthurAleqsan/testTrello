@@ -7,7 +7,6 @@ const PORT = process.env.PORT || 3000;
 
 const BASE_URL = 'https://uxcandy.com/~shapoval/';
 
-// app.use('/test-task-backend', proxy({target: BASE_URL, changeOrigin: true, }));
 
 app.use('/test-task-backend', (req, res, next) => {
     next();

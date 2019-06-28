@@ -31,9 +31,33 @@
   }
   .left-column {
     flex: 0.15;
+    .ordered-btn-container {
+        color: #4c5264;
+        padding: 20px;
+        border-bottom: 1px solid #e6e6e6;
+        span {
+            cursor: pointer;
+            border: 1px solid #e6e6e6;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .checkbox-container {
+            display: flex;
+            margin: 10px;
+            input {
+                margin: 5px;
+            }
+        }
+    }
   }
   .right-column {
     flex: 0.85;
+    .task-pagination {
+        display: flex;
+        justify-content: center;
+        margin: 10px;
+    }
   }
 }
 .task-box {
@@ -43,8 +67,21 @@
   margin: 5px 0;
   .task-box-header {
     display: flex;
-    align-items: center;                                                                                
+    align-items: center; 
+    position: relative;
+    .edit-icon {
+        background-image: url('./../images/pencil.svg');
+        width: 20px;
+        height: 20px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+    }                                                                               
   }
+
   .task-box-footer {
     p {
       display: flex;

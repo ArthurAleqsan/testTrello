@@ -8,6 +8,11 @@ const initialState = {
 
 export default function globalReducer(state = initialState, action) {
     switch (action.type) {
+        case types.LOGIN_TO_ADMIN:
+            return {
+                ...state,
+                isAdmin: true,
+            }
         default:
             return state
     }
