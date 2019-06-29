@@ -22,6 +22,10 @@ export default class ServerConnector {
         return formData;
     }
 
+    static _handleErrors(res) {
+        if(res.status !== 401) return res;
+    }
+
     send(req, errHandler) {
         const path = `${this.path}${req.path}`;
         return ServerConnector._makeRequest(req, path, errHandler).then((res) => {
