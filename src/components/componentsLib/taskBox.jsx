@@ -15,7 +15,7 @@ const TaskBox = ({ task, isAdmin, editTask }) => {
                     <p>userName: {username}</p>
                     <p>email: {email}</p>
                 </div>
-                {!isAdmin && <div
+                {isAdmin && <div
                     className='edit-icon'
                     onClick= {() => setPopup(<BasicPopup from = 'taskBox' editTask = {editTask} taskId = {id} close = {() => setPopup(null)} editableText = {text} status = {status} />)}
                 ></div>}
