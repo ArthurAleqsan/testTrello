@@ -1,4 +1,4 @@
-import * as types from './../types';
+import * as types from '../types';
 
 const initialState = {
     adminEmail: 'admin',
@@ -6,7 +6,7 @@ const initialState = {
     isAdmin: false,
 };
 
-export default function globalReducer(state = initialState, action) {
+export default function authReducer(state = initialState, action) {
     switch (action.type) {
         case types.LOGIN_TO_ADMIN:
             return {

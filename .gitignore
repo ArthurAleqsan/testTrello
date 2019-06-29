@@ -1,6 +1,5 @@
 node_modules
-public
-publicDev
+# public 
 .idea
 # Elastic Beanstalk Files
 .elasticbeanstalk/*

@@ -42,7 +42,7 @@ Main.propTypes = {
 };
 const mapStateToProps = state => {
     const { tasks, taskTotalCount, query } = state.tasks;
-    const { isAdmin } = state.global;
+    const { isAdmin } = state.auth;
     return {
         tasks,
         isAdmin,

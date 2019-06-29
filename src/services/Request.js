@@ -9,14 +9,17 @@ export default class ServerConnector {
     
     static makeQuery(obj){
         let query = '';
-        Object.keys(obj).forEach((key, i) => {
-            query += `&${key}=${obj[key]}`
+        Object.keys(obj).forEach((key) => {
+            query += `&${key}=${obj[key]}`;
         });
         return query.substr(1);
     }
-
-    static _handleErrors(res) {
-        if(res.status !== 401) return res;
+    static makeFormData(data) {
+        const formData = new FormData();
+        Object.keys(data).forEach(key => {
+            formData.append(key, data[key]);
+        });
+        return formData;
     }
 
     send(req, errHandler) {
@@ -35,29 +38,15 @@ export default class ServerConnector {
                     });
                 }
             )
-            .catch(error => {
-                if (errHandler) {
-
-                }
-                return { status: error.message, json: {} }
-            });
     }
 
-    static fetcher(req, path, errHandler) {
-        const headersObj = Object.assign({
-            // 'content-type': 'multipart/form-data',
-            // 'mimeType': "multipart/form-data",
-            // 'content-type': 'application/json',
-            // 'mimeType': "multipart/form-data",
-            // 'Cache-Control': 'no-cache',
-            // "authorization": `Bearer ${localStorage.getItem('token')}`,
-        }, req.headers);
+    static fetcher(req, path) {
+        const headersObj = Object.assign({}, req.headers);
 
         const headers = new Headers(headersObj);
 
         const options = Object.assign({
             method: 'POST',
-            // credentials: 'same-origin',
         }, req.options);
 
         options.headers = headers;

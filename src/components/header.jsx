@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import BasicPopup from './basic-popup';
 import { createTask } from './../store/tasks/tasks.actions';
-import { login } from './../store/global/global.actins';
+import { login } from '../store/auth/auth.actins';
 
 
 
@@ -39,7 +39,7 @@ Header.propTypes = {
     login: PropTypes.func.isRequired,
 };
 const mapStateToProps = state => {
-    const { adminEmail, pass, isAdmin, } = state.global;
+    const { adminEmail, pass, isAdmin, } = state.auth;
     return {
         adminEmail,
         pass,

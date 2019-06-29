@@ -17,13 +17,10 @@ class MainService extends Request {
         return this.send({ path: `/?developer=Arthur&${Request.makeQuery(query)}`, options }).then((tasks) => (tasks));
     }
     createTask(data) {
-        const formData = new FormData();
-        formData.append('username', data.username);
-        formData.append('email', data.email);
-        formData.append('text', data.text);
+
         const options = {
             method: 'POST',
-            body: formData,
+            body: Request.makeFormData(data),
         };
 
         return this.send({ path: '/create?developer=Arthur', options, }).then((task) => (task));
@@ -35,15 +32,9 @@ class MainService extends Request {
         });
         params_string = params_string + 'token=' + encodeURIComponent('beejee');
 
-        const formData = new FormData();
-        formData.append('status', data.status);
-        formData.append('text', data.text);
-        formData.append('token', 'beejee');
-        formData.append('signature', md5Hash(params_string));
-
         const options = {
             method: 'POST',
-            body: formData,
+            body: Request.makeFormData({...data, 'token': 'beejee', 'signature': md5Hash(params_string)}),
         };
 
         return this.send({ path: `/edit/${id}?developer=Arthur`, options, }).then((res) => (res));
