@@ -17,7 +17,6 @@ export default class ServerConnector {
 
     static _handleErrors(res) {
         if(res.status !== 401) return res;
-        //logout
     }
 
     send(req, errHandler) {

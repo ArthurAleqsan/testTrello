@@ -1,4 +1,5 @@
 import Request from './Request';
+import { md5Hash } from '../util/helpers';
 
 
 class MainService extends Request {
@@ -28,17 +29,24 @@ class MainService extends Request {
         return this.send({ path: '/create?developer=Arthur', options, }).then((task) => (task));
     }
     editTask(id, data) {
+        let params_string = '';
+        Object.keys(data).sort().forEach((k) => {
+            params_string = params_string + encodeURIComponent(k) + '=' + encodeURIComponent(data[k]) + '&';
+        });
+        params_string = params_string + 'token=' + encodeURIComponent('beejee');
+
         const formData = new FormData();
         formData.append('status', data.status);
         formData.append('text', data.text);
-        formData.append('token ', 'beejee');
-        console.log(formData);
+        formData.append('token', 'beejee');
+        formData.append('signature', md5Hash(params_string));
+
         const options = {
             method: 'POST',
             body: formData,
         };
 
-        return this.send({ path: `/edit/${id}?developer=Arthur`, options, }).then((r) => console.log(r));
+        return this.send({ path: `/edit/${id}?developer=Arthur`, options, }).then((res) => (res));
     }
 }
 

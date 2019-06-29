@@ -31,6 +31,11 @@ export default function taskReducer(state = initialState, action) {
                 ...state,
                 query: action.query,
             }
+        case types.SUCCESS_EDIT_TASK:
+            return {
+                ...state,
+                tasks: action.newTasks
+            }
 
         default:
             return state

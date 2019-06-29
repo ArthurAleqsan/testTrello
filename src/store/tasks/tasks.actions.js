@@ -1,5 +1,6 @@
 import * as types from './../types';
 import MainService from './../../services/MainService';
+import { updateInArray } from './../../util/helpers';
 
 export function getTasks(query) {
     return (dispatch) => {
@@ -41,7 +42,27 @@ export function setQuery(query) {
     }
 }
 export function editTask(id, task) {
-    return (dispatch) => {
+    return (dispatch, getState) => {
         MainService.editTask(id, task)
+            .then(res => {
+                const { status, json } = res;
+                if (MainService.isOkStatus(status) && json.status === 'ok') {
+                    const { tasks } = getState().tasks;
+                    const { text, status } = task;
+
+                    let newTasks = [...tasks];
+                    const index = tasks.findIndex(task => task.id === id);
+                    const editedTask = {...tasks[index], text, status}
+                    newTasks = updateInArray(newTasks,
+                        task => task.id === id,
+                        () => editedTask
+                    );
+
+                    dispatch({
+                        type: types.SUCCESS_EDIT_TASK,
+                        newTasks
+                    });
+                }
+            });
     }
 }

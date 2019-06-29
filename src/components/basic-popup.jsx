@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
 import { message } from "antd";
 import 'antd/lib/message/style/index.css';
 
@@ -13,13 +12,13 @@ const BasicPopup = ({ close, from, adminEmail, pass, create_task, login, taskId,
         username: '',
         text: from === 'taskBox' ? editableText : '',
         password: '',
-        status: null,
+        status: from === 'taskBox' ? status : null,
     });
 
-    const [activePage, setActivePage] = useState(from === 'taskBox' ? status : null);
+    const [activePage, setActivePage] = useState(inputFields.status);
     const EMAIL_VALIDATION_REGEX = '^[^@]+@[^@]+\.[^@]+$';
     const starsOfStatus = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 11; i++) {
         starsOfStatus.push(i);
     }
     const createTask = () => {
@@ -48,11 +47,11 @@ const BasicPopup = ({ close, from, adminEmail, pass, create_task, login, taskId,
     }
     const setStatus = (status) => {
         setActivePage(status);
-        setFields({ ...inputFields, status })
+        setFields({ ...inputFields, status });
     };
     const saveTask = () => {
         editTask(taskId, { text: inputFields.text, status: inputFields.status });
-        // console.log(inputFields);
+        close();
     };
     let popupBody;
     switch (from) {
