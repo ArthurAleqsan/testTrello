@@ -13,9 +13,6 @@ app.use('/test-task-backend', (req, res, next) => {
 }, proxy({target: BASE_URL, changeOrigin: true},onError));
 
 
-const page = require('./page/');
-
-
 app.use('/public', express.static('public'));
 app.use('/locales', express.static('locales'));
 app.use('/assets', express.static('assets'));

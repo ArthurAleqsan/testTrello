@@ -8,7 +8,7 @@ const TaskBox = ({ task, isAdmin, editTask }) => {
     const { email, status, username, text, id, } = task;
     const [popup, setPopup] = useState(null);
     return (
-        <div className={`task-box ${status > 5 ? 'task-box-is-done' : ''}`}>
+        <div className={`task-box ${status > 0 ? 'task-box-is-done' : ''}`}>
             <div className='task-box-header'>
                 <ImageBox image={'https://cdn2.stylecraze.com/wp-content/uploads/2014/01/2823.jpg'} width='60px' height='60px' />
                 <div className='user-info'>
