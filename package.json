@@ -67,7 +67,7 @@
     "@types/react-i18next": "^8.1.0",
     "@types/styled-components": "^4.1.8",
     "antd": "^3.16.2",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "express-http-proxy": "^1.5.1",
     "http-proxy-middleware": "^0.19.1",
     "i18next": "^13.1.2",
